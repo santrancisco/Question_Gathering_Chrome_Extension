@@ -1,0 +1,45 @@
+{
+  "manifest_version": 2,
+
+  "name": "Question Collector",
+  "description": "This extension allow you to collect questions and answer to a sqlite database",
+  "version": "1.0",
+
+  "browser_action": {
+    "default_icon": "icon.png",
+    "default_popup": "popup.html"
+  },
+  "background": {
+    "scripts": ["background.js"]
+  },
+	"commands": {
+    // execute_browser_action is reserved for triggering browser_action popup above!
+		"_execute_browser_action": {
+			"suggested_key": {
+        "default": "Ctrl+Shift+2",
+				"windows": "Ctrl+Shift+2",
+				"mac": "Command+Shift+2",
+				"chromeos": "Ctrl+Shift+2",
+				"linux": "Ctrl+Shift+2"
+			}
+		},
+    // This is how we declare a custom command that can be trigger using
+    // chrome.commands.onCommand.addListener in background.js.
+    // Note that this may not work unless you remove and add the extension again in developer mode!
+    "additem": {
+			"suggested_key": {
+        "default": "Ctrl+Shift+1",
+				"windows": "Ctrl+Shift+1",
+				"mac": "Command+Shift+1",
+				"chromeos": "Ctrl+Shift+1",
+				"linux": "Ctrl+Shift+1"
+			},
+      "description":"Save question"
+		}
+	},
+  "permissions": [
+    "unlimitedStorage",
+    "activeTab",
+		"storage"
+  ]
+}

@@ -1,0 +1,52 @@
+<!doctype html>
+<!--
+ This page is shown when the extension button is clicked, because the
+ "browser_action" field in manifest.json contains the "default_popup" key with
+ value "popup.html".
+ -->
+<html>
+  <head>
+    <title>Wordlist</title>
+    <style>
+      body {
+        font-family: "Segoe UI", "Lucida Grande", Tahoma, sans-serif;
+        font-size: 100%;
+      }
+      #status {
+        /* avoid an excessively wide status text */
+        min-height: 400px;
+        max-width: 500px;
+      }
+      button {
+          color: #fff;
+          background-color: #6496c8;
+          text-shadow: -1px 1px #417cb8;
+          border: none;
+      }
+    </style>
+
+    <!--
+      - JavaScript and HTML must be in separate files: see our Content Security
+      - Policy documentation[1] for details and explanation.
+      -
+      - [1]: https://developer.chrome.com/extensions/contentSecurityPolicy
+     -->
+  </head>
+  <body>
+    <!-- we would love to use onclick but chrome extension does not allow inline javascript so we will need to add event listener -->
+    <textarea width = "200px" id="lastquestion" readonly></textarea>
+    <br>
+    <div>
+      <button id="deletelast">Delete last question</button>
+    </div>
+    <p></p>
+    <div>
+      <textarea width = "200px" id="currentquestion"></textarea>
+    </div>
+    
+    <button id="savecurrent">Edit current question</button>
+    <button id="exportToFile">Export all questions</button>
+    <button id="clearall">Clear all questions</button>
+  </body>
+  <script src="popup.js"></script>
+</html>
